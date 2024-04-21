@@ -1,0 +1,18 @@
+#include <iostream>
+ 
+struct point {
+    double x,y;
+};
+ 
+double getSquare(point *P, int N) {
+    double r=0;
+    for (int i = 0; i<N; i++)
+        r+=(P[(i+1)%N].x-P[i].x)*(P[i].y+P[(i+1)%N].y);
+    return r>0?r/2:-r/2;
+}
+ 
+int main()
+{
+    point P[4] = {{0,2},{1,1},{0,0},{3,1}};
+    std::cout << getSquare(P,4);
+}
